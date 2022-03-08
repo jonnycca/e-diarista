@@ -18,6 +18,15 @@ public class ServicoController {
     @Autowired
     private ServicoRepository repository;
 
+    @GetMapping
+    public ModelAndView buscarTodos(){
+        var modelAndView = new ModelAndView("admin/servico/lista");
+
+        modelAndView.addObject("servicos", repository.findAll());
+
+        return modelAndView;
+    }
+
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar(){
         var modelAndView = new ModelAndView("admin/servico/form");
